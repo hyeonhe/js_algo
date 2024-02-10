@@ -1,6 +1,7 @@
 let fs = require("fs");
 let input = fs.readFileSync("/dev/stdin").toString().split(" ");
 
-const [a, b] = input;
+let a = parseInt(input[0]);
+let b = parseInt(input[1]);
 
-console.log(Number(a) + Number(b));
+console.log(a + b);
