@@ -1,10 +1,9 @@
 const fs = require("fs");
 const input = fs.readFileSync("/dev/stdin").toString().split("\n");
 
-let [n, arr, m, nums] = input;
 const answer = [];
-arr = arr.split(" ").map((v) => +v);
-nums = nums.split(" ").map((v) => +v);
+const arr = input[1].split(" ").map((v) => +v);
+const nums = input[3].split(" ").map((v) => +v);
 
 arr.sort((a, b) => a - b);
 
