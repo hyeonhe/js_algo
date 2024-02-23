@@ -1,11 +1,14 @@
 const fs = require("fs");
 const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 
-input.forEach((item) => {
-  const triangle = item.split(" ").map((i) => +i);
-  triangle.sort((a, b) => a - b);
+for (let i in input) {
+  if (input[i] === "0 0 0") {
+    break;
+  }
 
+  const triangle = input[i].split(" ").map((n) => +n * +n);
+  triangle.sort((a, b) => a - b);
   const [a, b, c] = triangle;
-  const result = a * a + b * b === c * c ? "right" : "wrong";
-  console.log(a > 0 ? result : "");
-});
+
+  console.log(a + b === c ? "right" : "wrong");
+}
