@@ -12,21 +12,20 @@ const bracket = ["[", "]", "(", ")"];
 
 input.forEach((char) => {
   for (let i = 0; i < char.length; i++) {
-    if (bracket.includes(char[i])) {
-      if (char[i] === "[" || char[i] === "(") {
-        stack.push(char[i]);
-      } else if (char[i] === "]" && stack[stack.length - 1] === "[") {
-        stack.pop();
-      } else if (char[i] === ")" && stack[stack.length - 1] === "(") {
-        stack.pop();
-      } else if (char[i] === "]" || char[i] === ")" || stack.length === 0) {
-        stack.push(char[i]);
-        break;
-      } else {
-        berak;
-      }
-    } else {
+    if (!bracket.includes(char[i])) {
       continue;
+    }
+    if (char[i] === "[" || char[i] === "(") {
+      stack.push(char[i]);
+    } else if (stack.length === 0 && (char[i] === "]" || char[i] === ")")) {
+      stack.push(char[i]);
+      break;
+    } else if (char[i] === "]" && stack[stack.length - 1] === "[") {
+      stack.pop();
+    } else if (char[i] === ")" && stack[stack.length - 1] === "(") {
+      stack.pop();
+    } else {
+      break;
     }
   }
 
