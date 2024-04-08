@@ -5,14 +5,14 @@ const input = require("fs")
   .split("\n");
 
 const [n, m] = input.shift().split(" ").map(Number);
-const a = new Set(input.slice(0, n));
-const b = new Set(input.slice(n));
+const set = new Set(input.splice(0, n));
+const answer = [];
 
-Set.prototype.intersection = function (set) {
-  return [...this].filter((v) => set.has(v));
-};
-
-const answer = a.intersection(b);
+for (const word of input) {
+  if (set.has(word)) {
+    answer.push(word);
+  }
+}
 
 console.log(answer.length);
 console.log(answer.sort().join("\n"));
