@@ -15,18 +15,23 @@ for (let i = 0; i < t; i++) {
 
   while (true) {
     const item = array.shift();
-    if (Math.max(...array) <= item && position === 0) {
-      answer.push(count);
-      break;
-    } else if (Math.max(...array) <= item) {
-      position--;
-      count++;
-    } else if (Math.max(...array) > item && position === 0) {
+    const max = Math.max(...array);
+   
+    if (max <= item) {
+      if (position === 0) {
+        answer.push(count);
+        break;
+      } else {
+        count++;
+        position--;
+      }
+    } else {
+      if (position === 0) {
+        position = array.length;
+      } else {
+        position--;
+      }
       array.push(item);
-      position = array.length - 1;
-    } else if (Math.max(...array) > item) {
-      array.push(item);
-      position--;
     }
   }
 }
