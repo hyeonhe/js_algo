@@ -30,7 +30,6 @@ function solution(want, number, discount) {
         
         if (isEqualObject(wishList, discountList)) cnt++
     }
-    console.log(wishList)
     
     return cnt
 }
