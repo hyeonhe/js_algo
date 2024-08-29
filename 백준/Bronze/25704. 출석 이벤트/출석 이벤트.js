@@ -1,5 +1,5 @@
 const fs = require("fs");
-const [N, P] = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+const [N, P] = fs.readFileSync("/dev/stdin").toString().trim().split("\n").map(Number);
 
 let answer = P;
 
