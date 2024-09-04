@@ -1,4 +1,10 @@
 const fs = require("fs");
-const arr = fs.readFileSync("/dev/stdin").toString().trim().split("");
+const ans = fs
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split("")
+  .sort((a, b) => b - a)
+  .join("");
 
-console.log(arr.sort((a, b) => b - a).join(""));
+console.log(ans);
