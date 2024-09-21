@@ -4,12 +4,6 @@ const [a, b] = fs
   .toString()
   .trim()
   .split(" ")
-  .map((i) => i.split(""));
+  .map((i) => i.split("").map(Number));
 
-let ans = 0;
-
-a.forEach((i) => {
-  b.forEach((j) => (ans += i * j));
-});
-
-console.log(ans);
+console.log(a.reduce((i, j) => i + j, 0) * b.reduce((i, j) => i + j, 0));
