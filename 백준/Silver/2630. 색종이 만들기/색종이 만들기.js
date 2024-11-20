@@ -1,16 +1,16 @@
 let white = 0;
 let blue = 0;
-function slicePaper(arr) {
-  const paper = arr[0][0];
-  const half = arr.length / 2;
+function slicePaper(x, y, size) {
+  const paper = arr[x][y];
+  const half = size / 2;
     
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr[0].length; j++) {
+  for (let i = x; i < x + size; i++) {
+    for (let j = y; j < y + size; j++) {
       if (paper !== arr[i][j]) {
-        slicePaper(arr.slice(0, half).map((row) => row.slice(0, half)));
-        slicePaper(arr.slice(0, half).map((row) => row.slice(half)));
-        slicePaper(arr.slice(half).map((row) => row.slice(0, half)));
-        slicePaper(arr.slice(half).map((row) => row.slice(half)));
+        slicePaper(x, y, half);
+        slicePaper(x, y + half, half);
+        slicePaper(x + half, y, half);
+        slicePaper(x + half, y + half, half);
         return;
       }
     }
@@ -28,6 +28,6 @@ const input = require('fs')
 input.shift();
 const arr = input.map((row) => row.split(' ').map(Number));
 
-slicePaper(arr);
+slicePaper(0, 0, arr.length);
 console.log(white);
 console.log(blue);
